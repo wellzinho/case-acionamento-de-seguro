@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="64" height="93" viewBox="0 0 64 93" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Doc boleto V1" clip-path="url(#clip0_0_514)">
+<path id="Vector" d="M0.540001 1.08H40.92C53.36 1.08 63.45 11.18 63.45 23.61V92.54H0.540001V1.08Z" fill="white"/>
+<path id="Vector (Stroke)" d="M0.165001 1.08C0.165001 0.872893 0.332894 0.705 0.540001 0.705H40.92C53.5672 0.705 63.825 10.973 63.825 23.61V92.54C63.825 92.7471 63.6571 92.915 63.45 92.915H0.540001C0.332894 92.915 0.165001 92.7471 0.165001 92.54V1.08ZM0.915001 1.455V92.165H63.075V23.61C63.075 11.387 53.1528 1.455 40.92 1.455H0.915001Z" fill-rule="evenodd" clip-rule="evenodd" fill="#D80073"/>
+<path id="Vector_2" d="M40.97 1.09V23.62H63.45C63.45 11.19 53.39 1.11 40.97 1.09Z" fill="white"/>
+<path id="Vector (Stroke)_2" d="M40.705 0.824622C40.7755 0.754278 40.871 0.71484 40.9706 0.715001C53.5977 0.735334 63.825 10.9833 63.825 23.62C63.825 23.8271 63.6571 23.995 63.45 23.995H40.97C40.7629 23.995 40.595 23.8271 40.595 23.62V1.09C40.595 0.990439 40.6346 0.894965 40.705 0.824622ZM41.345 1.46873V23.245H63.0719C62.8741 11.3197 53.2599 1.68626 41.345 1.46873Z" fill-rule="evenodd" clip-rule="evenodd" fill="#D80073"/>
+<path id="Vector_3" d="M12.42 63H7.94V79.54H12.42V63Z" fill="#FF59C1"/>
+<path id="Vector_4" d="M32.07 63H27.59V79.54H32.07V63Z" fill="#FF59C1"/>
+<path id="Vector_5" d="M56.06 63H51.58V79.54H56.06V63Z" fill="#FF59C1"/>
+<path id="Vector_6" d="M24.7 63H15.44V79.54H24.7V63Z" fill="#FF59C1"/>
+<path id="Vector_7" d="M48.56 63H35.12V79.54H48.56V63Z" fill="#FF59C1"/>
+</g>
+<defs>
+<clipPath id="clip0_0_514">
+<rect width="64" height="93" fill="white"/>
+</clipPath>
+</defs>
+</svg>

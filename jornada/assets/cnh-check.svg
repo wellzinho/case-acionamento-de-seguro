@@ -1,0 +1,9 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Group 4738008">
+<path id="Vector" d="M8.75003 4.5L5.08334 8L3.25003 6.25" stroke-linecap="round" stroke-linejoin="round" stroke="#45B12E"/>
+<mask id="stroke0_0_8421" fill="white">
+<path d="M6 12C9.31371 12 12 9.31371 12 6C12 2.68629 9.31371 0 6 0C2.68629 0 0 2.68629 0 6C0 9.31371 2.68629 12 6 12Z"/>
+</mask>
+<path id="Vector_2" d="M12 6C12 9.31371 9.31371 12 6 12C2.68629 12 0 9.31371 0 6C0 2.68629 2.68629 0 6 0C9.31371 0 12 2.68629 12 6Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#45B12E" mask="url(#stroke0_0_8421)"/>
+</g>
+</svg>

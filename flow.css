@@ -1,0 +1,107 @@
+/* User Flow editorial — reprodução do quadro original, sem alterar o conteúdo. */
+.flow-atlas{
+  --ink:#f7eef4;--mute:#c9bcc8;--line:#3a3040;--hot:#ff4fa3;--cyan:#7ee8dc;--amber:#f5c242;--orange:#ff6a3d;--violet:#b9a4ff;
+  position:relative;margin:28px 0 8px;padding:clamp(18px,2.8vw,32px);border-radius:24px;
+  background:radial-gradient(ellipse at 12% -10%,#4a2740 0%,#1a151d 42%,#141117 100%);
+  color:var(--ink);overflow:hidden;box-shadow:0 30px 70px -45px #2a0f27;
+}
+.flow-atlas:before{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(#ffffff08 1px,transparent 1px),linear-gradient(90deg,#ffffff08 1px,transparent 1px);
+  background-size:48px 48px;mask-image:radial-gradient(ellipse at 50% 30%,#000 40%,transparent 80%);
+}
+.flow-head,.flow-tabs,.flow-stage,.flow-detail,.flow-legend,.flow-foot{position:relative;z-index:1}
+.flow-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:18px}
+.flow-kicker{display:block;font-size:11px;font-weight:650;letter-spacing:.13em;text-transform:uppercase;color:var(--hot)}
+.flow-head p{margin:6px 0 0;font-size:14px;color:var(--mute);max-width:640px}
+.flow-original,.flow-play{
+  border:1px solid #8a7588;background:transparent;color:inherit;border-radius:24px;padding:9px 15px;font-size:13px
+}
+.flow-original:hover,.flow-play:hover{border-color:#f6bcd7;color:#fff}
+.flow-play[aria-pressed=true]{background:#f5d4e4;color:#392631;border-color:transparent}
+.flow-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.flow-tabs button{
+  background:transparent;color:#eadce6;border:1px solid #a490a0;border-radius:25px;padding:9px 14px;font-size:13px
+}
+.flow-tabs button[aria-pressed=true]{background:#f5d4e4;color:#392631;border-color:transparent}
+.flow-stage{position:relative;min-height:210px;padding:8px 0 4px}
+.flow-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.flow-svg .glow{filter:url(#flowGlow)}
+.flow-svg .wire{
+  fill:none;stroke:#6a4a62;stroke-width:1.15;stroke-dasharray:5 7;opacity:.55
+}
+.flow-svg .neon{
+  fill:none;stroke:var(--hot);stroke-width:1.8;stroke-linecap:round;
+  filter:url(#flowGlow);stroke-dasharray:6 14;
+  animation:flow-dash 16s linear infinite
+}
+.flow-svg .neon.lit{stroke-dasharray:none;stroke:#ff9ac8}
+.flow-svg .pulse{
+  fill:#fff;filter:url(#flowGlow);
+  animation:flow-pulse 2.4s ease-in-out infinite
+}
+.flow-rows{display:flex;flex-direction:column;gap:28px;position:relative}
+.flow-row{display:flex;align-items:stretch;justify-content:space-between;gap:10px;position:relative;flex-wrap:nowrap}
+.flow-col{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center}
+.flow-node{
+  width:100%;border:0;border-radius:14px;padding:11px 10px 12px;
+  background:#241c27;color:inherit;text-align:left;cursor:pointer;
+  box-shadow:0 0 0 1px #3d3342 inset;transition:transform .25s,box-shadow .25s,background .25s
+}
+.flow-node small{display:block;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#9a7f93;margin-bottom:5px}
+.flow-node b{display:block;font-size:13px;font-weight:600;line-height:1.25;letter-spacing:-.02em}
+.flow-node[data-kind=step]{box-shadow:0 0 0 1px #2f6f68 inset,0 0 18px #7ee8dc22}
+.flow-node[data-kind=step] small{color:#7ee8dc}
+.flow-node[data-kind=decision]{border-radius:4px 18px;background:#2a2033;box-shadow:0 0 0 1px #6d5aa3 inset,0 0 18px #b9a4ff22}
+.flow-node[data-kind=decision] small{color:var(--violet)}
+.flow-node[data-kind=action]{box-shadow:0 0 0 1px #8a3a24 inset,0 0 18px #ff6a3d22}
+.flow-node[data-kind=action] small{color:var(--orange)}
+.flow-node[data-kind=pending]{box-shadow:0 0 0 1px #7a5a16 inset,0 0 18px #f5c24222}
+.flow-node[data-kind=pending] small{color:var(--amber)}
+.flow-node[data-kind=end],.flow-node[data-kind=start]{box-shadow:0 0 0 1px #8a2a5c inset,0 0 22px #ff4fa344}
+.flow-node[data-kind=end] small,.flow-node[data-kind=start] small{color:var(--hot)}
+.flow-node.is-on,.flow-node:hover,.flow-node:focus-visible{
+  transform:translateY(-3px);background:#2e2433;
+  box-shadow:0 0 0 1px var(--hot) inset,0 0 28px #ff4fa366
+}
+.flow-node.is-on b{color:#fff}
+.flow-branch{
+  display:flex;gap:8px;flex-wrap:wrap;margin-top:18px;padding-top:4px
+}
+.flow-branch:empty{display:none}
+.flow-branch .flow-node{flex:1 1 180px;max-width:240px}
+.flow-detail{
+  display:grid;grid-template-columns:1.35fr .9fr;gap:22px;align-items:stretch;
+  margin-top:22px;padding-top:18px;border-top:1px solid #3a3040
+}
+.flow-copy h3{margin:8px 0 10px;font-size:clamp(22px,3vw,34px);letter-spacing:-.04em;font-weight:550}
+.flow-copy p{margin:0;color:var(--mute);line-height:1.55;font-size:15px}
+.flow-copy .flow-note{margin-top:12px;font-size:13px;color:#e7c6d7}
+.flow-crop{border:0;background:#fff;border-radius:14px;padding:10px;cursor:zoom-in;min-height:150px}
+.flow-crop img{width:100%;height:170px;object-fit:contain;display:block}
+.flow-legend{display:flex;flex-wrap:wrap;gap:14px 22px;margin-top:18px;font-size:11px;letter-spacing:.04em;color:var(--mute)}
+.flow-legend i{display:inline-block;width:18px;height:8px;border-radius:4px;margin-right:7px;vertical-align:middle}
+.flow-legend .l-main i{background:var(--cyan);box-shadow:0 0 8px var(--cyan)}
+.flow-legend .l-dec i{background:var(--violet)}
+.flow-legend .l-act i{background:var(--orange)}
+.flow-legend .l-pen i{background:var(--amber)}
+.flow-legend .l-end i{background:var(--hot);box-shadow:0 0 8px var(--hot)}
+.flow-foot{margin:14px 0 0;font-size:12px;color:#9a7f93;max-width:820px}
+.flow-covers{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px}
+.flow-covers button{
+  border:1px solid #5a4658;background:transparent;color:#eadce6;border-radius:16px;padding:6px 10px;font-size:12px
+}
+.flow-covers button[aria-pressed=true]{background:#3a2436;border-color:var(--hot);color:#fff}
+@keyframes flow-dash{to{stroke-dashoffset:-240}}
+@keyframes flow-pulse{50%{opacity:.35}}
+@media (max-width:900px){
+  .flow-row{overflow:auto;scroll-snap-type:x proximity;padding-bottom:8px}
+  .flow-col{flex:0 0 132px;scroll-snap-align:start}
+  .flow-node{max-width:none}
+  .flow-detail{grid-template-columns:1fr}
+  .flow-crop img{height:140px}
+  .flow-branch{padding-left:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .flow-svg .neon,.flow-svg .pulse,.flow-node{animation:none!important;transition:none}
+}
