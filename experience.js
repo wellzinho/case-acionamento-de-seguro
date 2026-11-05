@@ -55,6 +55,13 @@
   const eduEntries=eduNames.map((name,i)=>{const frame=el('div','education-demo visao-copy');const text=el('div','demo-copy');text.append(el('span','folio','0'+(i+1)+' / 04'),el('h3','',['O seguro atende ao meu caso?','Quais situações ficam de fora?','O que preciso preparar?','O que acontece após o envio?'][i]),el('p','',['A primeira tela apresenta os casos cobertos.','As exclusões aparecem antes de abrir o pedido.','A pessoa pode baixar o formulário antes de começar o envio.','O cliente vê as etapas da análise e como receberá o retorno.'][i]));frame.append(text);return [name,frame]});
   exhibit(15,eduEntries,edu,'carousel','Percorra o carrossel educativo');edu.remove();
   const visaoStage=section(15).querySelector('.exhibit.carousel .stage');
+  const visaoExhibit=visaoStage.parentElement;
+  const visaoWash=el('div','visao-wash'),visaoWashImg=el('img');
+  visaoWash.setAttribute('aria-hidden','true');
+  visaoWashImg.alt='';
+  visaoWashImg.src='imagens/visao-geral.png';
+  visaoWash.append(visaoWashImg);
+  visaoExhibit.prepend(visaoWash);
   const visaoPhone=el('div','visao-phone'),visaoGlass=el('div','visao-glass'),visaoReel=el('img','visao-reel');
   visaoReel.src='imagens/visao-geral.png';visaoReel.alt='Jornada Acionar seguro, da cobertura ao que acontece depois do envio';
   visaoGlass.append(visaoReel);visaoPhone.append(visaoGlass);
@@ -62,7 +69,7 @@
   visaoZoom.onclick=()=>{const full=document.querySelector('#full');full.src=visaoZoom.dataset.src;full.alt=visaoZoom.getAttribute('aria-label');document.querySelector('#viewer').showModal()};
   const visaoWrap=el('div','visao-frame');visaoWrap.append(visaoPhone,visaoZoom);visaoStage.append(visaoWrap);
   const visaoStops=[0,0.34,0.47,0.62];
-  const showVisao=i=>visaoReel.style.setProperty('--reel',(-visaoStops[i]*100)+'%');
+  const showVisao=i=>visaoExhibit.style.setProperty('--reel',(-visaoStops[i]*100)+'%');
   [...visaoStage.parentElement.querySelectorAll('.exhibit-button')].forEach((b,i)=>b.addEventListener('click',()=>showVisao(i)));
   showVisao(0);
   const compare=section(21).querySelector('figure'),pair=section(21).querySelector('.paired'), states=[...pair.querySelectorAll('figure')];
@@ -134,8 +141,7 @@
     figs.forEach(f=>f.remove());
 
     const img=(src,alt)=>{const i=el('img');i.src=src;i.alt=alt;i.draggable=false;return i};
-    const homeMobile=img('imagens/web-spread/home-mobile.png','Página inicial da proposta web de morte por acidente, no mobile.');
-    const formDesk=img('imagens/web-spread/form-desktop.png','Identificação de quem aciona o seguro, no desktop.');
+    const homeMobile=img('imagens/web-spread/home-mobile.png?v=figma','Página inicial da proposta web de morte por acidente, no mobile.');
     const formSteps=[
       ['Em branco','Os campos ainda estão vazios e continuar permanece indisponível.','Formulário de identificação vazio, no mobile.'],
       ['CPF','O nome já foi informado. O CPF está em foco, com o teclado numérico.','CPF em foco no formulário mobile, com teclado numérico.'],
@@ -184,17 +190,32 @@
       stepImgs.forEach((image,j)=>{image.hidden=j!==i});
       if(spread.dataset.page==='form') note.textContent=formSteps[i][1];
     }
+    function mountDeskForm(){
+      const bar=desk.col.querySelector('.desk-chrome');
+      if(bar) bar.remove();
+      const shot=img('imagens/web-spread/form-desktop.png?v=figma','Identificação de quem aciona o seguro, no desktop.');
+      shot.className='desk-form';
+      desk.view.replaceChildren(shot);
+    }
     function mountDeskHome(){
+      const shell=desk.col.querySelector('.web-shell');
+      if(!shell.querySelector('.desk-chrome')){
+        const bar=img('imagens/web-spread/home-desktop-chrome.png?v=scroll','');
+        bar.className='desk-chrome';
+        bar.alt='';
+        bar.setAttribute('aria-hidden','true');
+        shell.insertBefore(bar, desk.view);
+      }
       const split=el('div','desk-split');
       const flow=el('div','desk-flow');
-      flow.append(img('imagens/web-spread/home-desktop-flow.png','Página inicial da proposta web de morte por acidente, no desktop. O conteúdo rola ao lado da imagem.'));
+      flow.append(img('imagens/web-spread/home-desktop-flow.png?v=scroll','Página inicial da proposta web de morte por acidente, no desktop. O conteúdo rola ao lado da imagem.'));
       const rail=el('div','desk-rail');
-      const photo=img('imagens/web-spread/home-desktop-photo.png','');
+      const photo=img('imagens/web-spread/home-desktop-photo.png?v=scroll','');
       photo.alt='';
       photo.setAttribute('aria-hidden','true');
       rail.append(photo);
       split.append(flow,rail);
-      const foot=img('imagens/web-spread/home-desktop-footer.png','Rodapé da página meutudo na proposta desktop.');
+      const foot=img('imagens/web-spread/home-desktop-footer.png?v=scroll','Rodapé da página meutudo na proposta desktop.');
       foot.className='desk-foot';
       desk.view.replaceChildren(split,foot);
     }
@@ -205,7 +226,7 @@
       num.textContent=p.num;
       lede.textContent=p.lede;
       pageBtns.forEach((b,j)=>{b.setAttribute('aria-selected',String(j===i));b.tabIndex=j===i?0:-1});
-      if(i===1){phone.view.replaceChildren(...stepImgs);selectStep(step);desk.view.replaceChildren(formDesk)}
+      if(i===1){phone.view.replaceChildren(...stepImgs);selectStep(step);mountDeskForm()}
       else{phone.view.replaceChildren(homeMobile);note.textContent=p.note;mountDeskHome()}
       phone.view.scrollTop=0;desk.view.scrollTop=0;range.value='0';
       original.setAttribute('aria-label','Ampliar: '+p.artLabel);
