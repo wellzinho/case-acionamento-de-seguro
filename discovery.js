@@ -17,7 +17,9 @@
  figure.classList.add('bp-original');figure.querySelector('img').src='imagens/blueprint-overview.webp';figure.querySelector('.zoom').dataset.src='imagens/blueprint-overview.webp';
  notes.querySelector('p').prepend('Usei o Gemini para organizar hipóteses antes da dinâmica. O time validou as restrições e tomou as decisões em conjunto. ');
  const orbit=inner.querySelector('.cine-orbit');
+ const source=inner.querySelector('a.source');
  inner.replaceChildren(eyebrow,title,intro,figure,panel,notes);
+ if(source) notes.before(source);
  if(orbit) bp.append(orbit);
  for(const n of [6,8]){const alias=el('span','legacy-anchor');alias.id='s'+n;sec(n).remove();bp.before(alias)}
  const flow=sec(12);flow.querySelector('.eyebrow span').textContent='User Flow · Validação técnica';flow.querySelector('h2').replaceChildren('Como o caminho muda ',el('em','','entre coberturas?'));flow.querySelector('.lead').textContent='Desenhei os caminhos do cliente e percorri cada ramificação com engenharia. Mudavam os documentos exigidos, quem podia abrir o pedido e o canal de acionamento.';

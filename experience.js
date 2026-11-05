@@ -149,7 +149,7 @@
       ['E-mail','O celular está preenchido. O e-mail está em foco, com o teclado alfabético.','E-mail em foco no formulário mobile, com teclado alfabético.'],
       ['Continuar','Os dados estão completos e o botão continuar fica disponível.','Formulário mobile completo, com continuar disponível.']
     ];
-    const stepImgs=formSteps.map(([, ,alt],i)=>img('imagens/web-spread/form-mobile-'+(i+1)+'.png',alt));
+    const stepImgs=formSteps.map(([, ,alt],i)=>img('imagens/web-spread/form-mobile-'+(i+1)+'.png'+([1,2,3].includes(i)?'?v=figma':''),alt));
     const pages=[
       {id:'home',num:'01',name:'Página inicial',lede:'Antes de abrir o pedido, a página explica a cobertura, os documentos e o que acontece depois do envio.',note:'No desktop, a imagem da direita fica fixa. A rolagem mostra o restante da página, no mesmo ponto do mobile.',art:'imagens/web.png',artLabel:'Morte por acidente — proposta de jornada web para V2'},
       {id:'form',num:'02',name:'Identificação do solicitante',lede:'Quem aciona pelo titular informa nome, CPF, celular e e-mail. No mobile, o teclado entra na tela. No desktop, formulário e imagem dividem a mesma vista.',note:'',art:'imagens/webform.png',artLabel:'Identificação de quem aciona o seguro — variações mobile e desktop'}

@@ -30,7 +30,11 @@
   const play = el('button', 'bpx-play', '▶ Percorrer etapas'); play.type = 'button'; play.setAttribute('aria-pressed', 'false');
   const mapBtn = el('button', 'bpx-mapbtn', 'Quadro original ⤢'); mapBtn.type = 'button';
   mapBtn.onclick = () => open('imagens/blueprint-overview.webp', 'Service Blueprint completo, como ficou ao final da dinâmica');
-  tools.append(play, mapBtn); head.append(title, tools);
+  const source = el('a', 'source', 'Documento original ↗');
+  source.href = 'https://www.figma.com/design/naf54O8h6e4FNH1ZUqgEun/Meutudo?node-id=2-262&p=f&t=VOTKcDkmSxKwruBs-0';
+  source.target = '_blank';
+  source.rel = 'noopener';
+  tools.append(play, mapBtn, source); head.append(title, tools);
 
   const steps = el('div', 'bpx-steps'); steps.setAttribute('role', 'tablist'); steps.setAttribute('aria-label', 'Etapas da jornada');
   const stepButtons = S.map((s, i) => {

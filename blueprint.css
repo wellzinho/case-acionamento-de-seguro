@@ -7,6 +7,8 @@
 .bpx-tools{display:flex;gap:8px;flex-wrap:wrap}
 .bpx-tools button{border:1px solid #8a7588;background:transparent;border-radius:24px;padding:9px 15px;font-size:13px;transition:background .25s,color .25s}
 .bpx-tools button:hover{background:#352c3b}
+.bpx-tools a.source{display:inline-flex;align-items:center;margin:0;border:1px solid #8a7588;background:transparent;border-radius:24px;padding:9px 15px;font-size:13px;font-weight:600;color:#f6bcd7;text-decoration:none;transition:background .25s,color .25s}
+.bpx-tools a.source:hover{background:#352c3b;color:#fff;text-decoration:none}
 .bpx-play[aria-pressed=true]{background:var(--accent);color:#2c1b27;border-color:transparent}
 
 /* Etapas */
